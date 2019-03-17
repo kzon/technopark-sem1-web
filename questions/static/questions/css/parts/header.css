@@ -1,0 +1,52 @@
+header .navbar {
+    background-color: #6f42c1;
+}
+
+header .navbar-brand {
+    font-size: 2.25em;
+}
+
+header .navbar-brand .icon {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: -5px;
+    overflow: visible;
+}
+
+header .search-form {
+    width: 40%;
+}
+
+header .search-form .search-input {
+    width: 100%;
+    border-radius: 16px;
+    border: 4px solid transparent;
+    transition: border .5s;
+}
+
+header .search-form .search-input:focus {
+    border: 4px solid white;
+}
+
+header .avatar-dropdown .btn {
+    color: white;
+}
+
+header .avatar-dropdown img {
+    width: 50px;
+    border-radius: 50%;
+    height: 50px;
+    object-fit: cover;
+}
+
+header .avatar-dropdown .btn .icon {
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+}
+
+header .avatar-dropdown .dropdown-toggle::after {
+    position: relative;
+    top: 3px;
+}

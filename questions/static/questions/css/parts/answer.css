@@ -1,0 +1,52 @@
+.answers {
+    margin-top: 5em;
+}
+
+.answer.answer-list-item {
+    margin-top: 4em;
+}
+
+.answer .user-avatar-link .avatar {
+    width: 70px;
+    height: 70px;
+    margin: auto;
+}
+
+.answer .answer-info {
+    text-align: right;
+    font-size: .9em;
+    color: #7b7b7b;
+    margin-top: 1.5em;
+}
+
+
+.answer .answer-date {
+    padding: 0 .5em;
+}
+
+.answer .answer-text {
+    font-size: 1.1em;
+}
+
+.answer .answer-votes {
+    margin-top: 1em;
+}
+
+.answer-form {
+    margin-top: 3em;
+}
+
+.answer-form label {
+    color: #555;
+    margin-bottom: 1em;
+}
+
+.answer-form .answer-form-submit {
+    width: 50%;
+    float: right;
+}
+
+.answer-input {
+    font-size: 1.1em;
+    margin-bottom: 1em;
+}

@@ -1,0 +1,16 @@
+.profile {
+    margin-top: 2em;
+}
+
+.profile .user-avatar .avatar {
+    width: 200px;
+    height: 200px;
+}
+
+.profile .user-avatar .avatar img {
+    border-radius: 16%;
+}
+
+.profile .profile-form-submit {
+    float: right;
+}

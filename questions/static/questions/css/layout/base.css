@@ -1,0 +1,10 @@
+@import "fonts.css";
+@import "../parts/header.css";
+
+.content {
+    padding: 2em 0;
+}
+
+.pagination .page-link {
+    color: black;
+}

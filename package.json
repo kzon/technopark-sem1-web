@@ -1,0 +1,12 @@
+{
+  "name": "qutti",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build-bootstrap",
+    "build-bootstrap": ""
+  },
+  "author": "",
+  "license": "ISC"
+}

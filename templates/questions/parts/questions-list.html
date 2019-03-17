@@ -1,0 +1,6 @@
+<div class="questions">
+    {% for question in questions %}
+        {% include 'questions/parts/question-list-item.html' %}
+    {% endfor %}
+    {% include 'questions/parts/pagination.html' %}
+</div>

@@ -1,0 +1,33 @@
+{% load static %}
+<div class="answer answer-list-item">
+    <div class="row">
+        <div class="col-2">
+            <a class="user-avatar user-avatar-link" href="#">
+                <div class="avatar">
+                    <img src="{% static "images" %}/{{ answer.user.avatar }}" alt="avatar">
+                </div>
+                <div class="username">{{ answer.user.name }}</div>
+            </a>
+            <div class="answer-votes number-selector">
+                <div class="number-selector-count">{{ answer.votes_count }}</div>
+                <div class="number-selector-controls">
+                    <div class="number-selector-control number-selector-control-up">
+                        <div class="div" data-icon="ei-chevron-up" data-size="s"></div>
+                    </div>
+                    <div class="number-selector-control number-selector-control-down">
+                        <div class="div" data-icon="ei-chevron-down" data-size="s"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="answer-text">{{ answer.text }}
+            </div>
+            <div class="row">
+                <div class="answer-info col offset-8">
+                    <span class="answer-date answer-created-date">{{ answer.created_date }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

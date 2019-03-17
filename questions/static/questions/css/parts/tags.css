@@ -1,0 +1,32 @@
+.tags {
+    padding-top: 3em;
+}
+
+.tags .tag {
+    font-size: 1.2em;
+    color: #e1e1e1;
+    margin: 0.4em;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+}
+
+.tags .tag:hover {
+    color: #222;
+}
+
+.tags .tag::before {
+    content: '#';
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: -11px;
+}
+
+.tags .tag:hover::before {
+    opacity: .6;
+}
+
+.tag-sign {
+    opacity: .6;
+}

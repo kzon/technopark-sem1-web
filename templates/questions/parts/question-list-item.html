@@ -1,0 +1,45 @@
+{% load static %}
+<div class="question question-list-item">
+    <div class="row">
+        <div class="col-2">
+            <a class="user-avatar user-avatar-link" href="#">
+                <div class="avatar">
+                    <img src="{% static "images" %}/{{ question.user.avatar }}" alt="avatar">
+                </div>
+                <div class="username">{{ question.user.name }}</div>
+            </a>
+        </div>
+        <div class="col-10">
+            <div class="question-header-container">
+                <h3 class="question-title"><a href="#">{{ question.title }}</a></h3>
+                <div class="question-votes number-selector">
+                    <div class="number-selector-count">{{ question.votes_count }}</div>
+                    <div class="number-selector-controls">
+                        <div class="number-selector-control number-selector-control-up">
+                            <div class="div" data-icon="ei-chevron-up" data-size="s"></div>
+                        </div>
+                        <div class="number-selector-control number-selector-control-down">
+                            <div class="div" data-icon="ei-chevron-down" data-size="s"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="question-preview-text">{{ question.preview_text }}
+            </div>
+            <div class="row">
+                <div class="question-tags col-8">
+                    {% for tag in question.tags %}
+                        <a class="question-tag" href="#">{{ tag }}</a>
+                    {% endfor %}
+                </div>
+                <div class="question-info col-4">
+                    <span class="question-date question-updated-date">{{ question.updated_date }}</span>
+                    <span class="question-answers-count">
+                                {{ question.answers_count }}
+                        {% if question.answers_count > 1 %} answers {% else %} answer {% endif %}
+                            </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

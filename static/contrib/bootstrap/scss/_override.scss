@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond|PT+Sans|PT+Serif');
+
+$primary: #dc3545;
+$secondary: #007bff;
+
+$link-color: $secondary;
+
+$border-width: 2px;
+$border-radius: .2rem !default;
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif: "PT Sans", Arial, sans-serif;
+$font-family-serif: "PT Serif", serif;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base: $font-family-serif;
+// stylelint-enable value-keyword-case
+
+$input-btn-focus-width: 0;
+$input-btn-focus-box-shadow: none;
+
+$input-transition: border-color .1s ease-in-out, box-shadow .1s ease-in-out

@@ -1,0 +1,33 @@
+{% extends 'questions/layout/base.html' %}
+
+{% block content %}
+    <h2 class="login-header text-center">Login<br>
+        <small>to ask questions and vote for answers</small>
+    </h2>
+    <div class="login row">
+        <div class="col-6 offset-3">
+            <div class="login-failed-text">
+                <div data-icon="ei-close"></div>
+                Login failed, wrong email or password
+            </div>
+            <form class="login-form needs-validation" novalidate>
+                <div class="form-group">
+                    <input type="email" class="form-control form-control-lg" placeholder="Email" maxlength="40"
+                           required>
+                    <div class="invalid-feedback">
+                        Please enter valid email
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control form-control-lg" placeholder="Password" maxlength="300"
+                           required>
+                    <div class="invalid-feedback">
+                        Please enter your password
+                    </div>
+                </div>
+
+                <button class="login-form-submit btn btn-primary btn-lg w-100" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
