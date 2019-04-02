@@ -90,6 +90,7 @@ def question(request):
         'created_date': '2019-01-10',
         'answers': [
             {
+                'id': 1,
                 'user': {'name': 'Andrey Rayel', 'avatar': 'man2.jpg'},
                 'text': 'Hello! I think, you need to ask technical support center. Aspernatur cupiditate mollitia '
                         'provident qui similique? Eum itaque, tempora? Aspernatur cupiditate mollitia provident qui '
@@ -98,6 +99,7 @@ def question(request):
                 'created_date': '2019-01-10'
             },
             {
+                'id': 2,
                 'user': {'name': 'Traktorist', 'avatar': 'man1.jpg'},
                 'text': 'Provident qui similique? Eum itaque, tempora? Aspernatur cupiditate mollitia provident qui.'
                         'I think, you need to ask technical support center.',
@@ -105,6 +107,7 @@ def question(request):
                 'created_date': '2019-01-10'
             },
             {
+                'id': 3,
                 'user': {'name': 'Andrey Rayel', 'avatar': 'man2.jpg'},
                 'text': 'Hello! I think, you need to ask technical support center. Aspernatur cupiditate mollitia '
                         'provident qui similique? Eum itaque, tempora? Aspernatur cupiditate mollitia provident qui '

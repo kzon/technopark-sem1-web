@@ -15,16 +15,6 @@
         <div class="col">
             <form class="profile-form needs-validation" novalidate>
                 <div class="form-group row">
-                    <label class="col-2 col-form-label text-right" for="profile-form-login-input">Login</label>
-                    <div class="col">
-                        <input type="text" class="form-control col" id="profile-form-login-input"
-                               placeholder="Enter your login..." maxlength="40" required>
-                        <div class="invalid-feedback">
-                            Please enter your login
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
                     <label class="col-2 col-form-label text-right" for="profile-form-email-input">Email</label>
                     <div class="col">
                         <input type="email" class="form-control col" id="profile-form-email-input"
@@ -41,6 +31,23 @@
                                placeholder="Enter your name..." maxlength="200" required>
                         <div class="invalid-feedback">
                             Please enter your name
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label text-right" for="profile-form-password-input">Password</label>
+                    <div class="col">
+                        <input type="password" class="form-control col" id="profile-form-password-input"
+                               placeholder="Enter new password..." maxlength="200">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label text-right" for="profile-form-password-repeat-input">Repeat password</label>
+                    <div class="col">
+                        <input type="password" class="form-control col" id="profile-form-password-repeat-input"
+                               placeholder="Repeat your new password..." maxlength="200">
+                        <div class="invalid-feedback">
+                            Passwords should match
                         </div>
                     </div>
                 </div>

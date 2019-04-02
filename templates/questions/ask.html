@@ -16,10 +16,20 @@
         <div class="form-group row">
             <label class="col-2 col-form-label" for="ask-form-question-text-input">Question text</label>
             <div class="col">
-                <textarea type="text" class="form-control col" id="ask-form-question-text-input" rows="6"
+                <textarea class="form-control col" id="ask-form-question-text-input" rows="6"
                           placeholder="Enter your question text..." maxlength="10000" required></textarea>
                 <div class="invalid-feedback">
                     Please enter question text
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label" for="ask-form-question-tags-input">Tags (comma separated)</label>
+            <div class="col">
+                <input type="text" class="form-control col" id="ask-form-question-tags-input"
+                       placeholder="Enter your question tags..." maxlength="10000" required>
+                <div class="invalid-feedback">
+                    Please enter question tags
                 </div>
             </div>
         </div>
