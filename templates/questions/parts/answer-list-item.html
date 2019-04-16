@@ -4,9 +4,9 @@
         <div class="col-2">
             <a class="user-avatar user-avatar-link" href="#">
                 <div class="avatar">
-                    <img src="{% static "images" %}/{{ answer.user.avatar }}" alt="avatar">
+                    <img src="{% static "uploads" %}/{{ answer.user.avatar }}" alt="avatar">
                 </div>
-                <div class="username">{{ answer.user.name }}</div>
+                <div class="username">{{ answer.user.user.username }}</div>
             </a>
             <div class="answer-votes number-selector">
                 <div class="number-selector-count">{{ answer.votes_count }}</div>
@@ -27,7 +27,8 @@
                 <div class="answer-info col offset-8">
                     <span class="answer-date answer-created-date">{{ answer.created_date }}</span>
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="answer-{{ answer.id }}-correct-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="answer-{{ answer.id }}-correct-checkbox"
+                            {% if answer.is_correct %} checked {% endif %}>
                         <label class="custom-control-label" for="answer-{{ answer.id }}-correct-checkbox">Correct!</label>
                     </div>
                 </div>

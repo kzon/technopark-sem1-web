@@ -2,7 +2,7 @@
 <header>
     <nav class="navbar navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{% url 'index' %}">
                 Qutti
                 <div data-icon="ei-comment"></div>
             </a>
@@ -12,23 +12,23 @@
             </form>
 
             {% if not is_ask_page %}
-                <button class="btn btn-primary btn-lg mr-2" type="submit">Ask!</button>
+                <a href="{% url 'ask' %}" class="btn btn-primary btn-lg mr-2">Ask!</a>
             {% endif %}
 
             {% if is_authorized %}
                 <div class="avatar-dropdown dropdown">
                     <button class="btn dropdown-toggle" type="button"
                             data-toggle="dropdown">
-                        <img src="{% static 'images' %}/{{ authorized_user.avatar }}" alt="Avatar">
+                        <img src="{{ authorized_user.avatar.url }}" alt="Avatar">
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Log out</a>
+                        <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
                     </div>
                 </div>
             {% else %}
-                <button class="btn btn-light btn-lg mr-2" type="submit">Login</button>
-                <button class="btn btn-light btn-lg mr-2" type="submit">Sign Up</button>
+                <a href="{% url 'login' %}" class="btn btn-light btn-lg mr-2">Login</a>
+                <a href="{% url 'signup' %}" class="btn btn-light btn-lg mr-2">Sign Up</a>
             {% endif %}
         </div>
     </nav>

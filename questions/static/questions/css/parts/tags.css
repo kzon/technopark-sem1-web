@@ -9,6 +9,7 @@
     cursor: pointer;
     white-space: nowrap;
     position: relative;
+    text-decoration: none;
 }
 
 .tags .tag:hover {

@@ -2,5 +2,9 @@
 
 {% block content %}
     <h1><span class="tag-sign">#</span>{{ tag }}</h1>
-    {% include "questions/parts/questions-list.html" %}
+    {% if questions|length > 0 %}
+        {% include "questions/parts/questions-list.html" %}
+    {% else %}
+        <h3 class="empty-content-message">No questions for this tag</h3>
+    {% endif %}
 {% endblock %}

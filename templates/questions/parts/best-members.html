@@ -1,8 +1,10 @@
 <div class="best-members">
     <h5>Best members</h5>
     <ul>
-        <li><a href="#">Podosinovik</a></li>
-        <li><a href="#">Krolik</a></li>
-        <li><a href="#">Andrew Raeyl</a></li>
+        {% for user in best_members %}
+            <li>
+                {{ user.rating }} – {{ user.user.username }}
+            </li>
+        {% endfor %}
     </ul>
 </div>

@@ -6,6 +6,12 @@
     margin-bottom: 1em;
 }
 
+.best-members ul {
+    padding-left: 0;
+}
+
 .best-members li {
     margin-top: .5em;
+    color: #666;
+    list-style-type: none;
 }

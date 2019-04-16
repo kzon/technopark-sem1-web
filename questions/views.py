@@ -1,144 +1,81 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
+from questions import models
+from django.contrib.auth.models import User
+from django.http import Http404
 
-questions = [
-    {
-        'title': 'I cannot find emergency exit on soviet Soyuz TMA-M',
-        'answers_count': 64,
-        'votes_count': 103,
-        'user': {'name': 'Podosinovik', 'avatar': 'man3.jpg'},
-        'preview_text': 'Really, I have no idea. Lorem ipsum dolor sit amet, consectetur adipisicing elit. '
-                        'Aspernatur cupiditate mollitia provident qui similique? Eum itaque, tempora? Commodi '
-                        'vero, vitae?',
-        'tags': ['Soyuz', 'Soyuz TMA-M', 'emergency exit', 'soviet', 'coffee'],
-        'updated_date': '2019-01-18'
-    },
-    {
-        'title': 'How to be dominus maximus dolor sit amet?',
-        'answers_count': 1,
-        'votes_count': 56,
-        'user': {'name': 'Max Maximus', 'avatar': 'man2.jpg'},
-        'preview_text': 'Really, I have no idea. Lorem ipsum dolor sit amet, consectetur adipisicing elit. '
-                        'Aspernatur cupiditate mollitia provident qui similique? Eum itaque, tempora? Commodi '
-                        'vero, vitae?',
-        'tags': ['dominus', 'maximus', 'how to be', 'coffee'],
-        'updated_date': '2019-01-18'
-    },
-    {
-        'title': 'How to find magic stone?',
-        'answers_count': 5,
-        'votes_count': 27,
-        'user': {'name': 'Andrey Rayel', 'avatar': 'man1.jpg'},
-        'preview_text': 'Really, I have no idea. Lorem ipsum dolor sit amet, consectetur adipisicing elit. '
-                        'Aspernatur cupiditate mollitia provident qui similique? Eum itaque, tempora? Commodi '
-                        'vero, vitae?',
-        'tags': ['magic', 'stone', 'coffee'],
-        'updated_date': '2019-01-18'
-    },
-    {
-        'title': 'How to be dominus maximus dolor sit amet?',
-        'answers_count': 1,
-        'votes_count': 22,
-        'user': {'name': 'Andrey Rayel', 'avatar': 'man2.jpg'},
-        'preview_text': 'Really, I have no idea. Lorem ipsum dolor sit amet, consectetur adipisicing elit. '
-                        'Aspernatur cupiditate mollitia provident qui similique? Eum itaque, tempora? Commodi '
-                        'vero, vitae?',
-        'tags': ['coffee', 'dominus', 'maximus', 'how to be'],
-        'updated_date': '2019-01-18'
-    },
-    {
-        'title': 'How to be dominus maximus dolor sit amet?',
-        'answers_count': 1,
-        'votes_count': 10,
-        'user': {'name': 'Andrey Rayel', 'avatar': 'man1.jpg'},
-        'preview_text': 'Really, I have no idea. Lorem ipsum dolor sit amet, consectetur adipisicing elit. '
-                        'Aspernatur cupiditate mollitia provident qui similique? Eum itaque, tempora? Commodi '
-                        'vero, vitae?',
-        'tags': ['dominus', 'maximus', 'coffee', 'how to be'],
-        'updated_date': '2019-01-18'
-    },
-]
+is_authorized = False
 
-is_authorized = True
+authorized_user_id = 3
 
-authorized_user = {
-    'name': 'Podosinovik',
-    'avatar': 'man3.jpg',
-}
+paginator_objects_per_page = 4
+paginator_page_number_request_param = 'page'
 
 
-def prepare_template_context(context):
+def paginate(objects, request):
+    paginator = Paginator(objects, paginator_objects_per_page)
+    page = request.GET.get(paginator_page_number_request_param)
+    return paginator.get_page(page)
+
+
+def prepare_template_context(context=None):
+    if context is None:
+        context = {}
     context['is_authorized'] = is_authorized
-    context['authorized_user'] = authorized_user
+    user = User.objects.get(pk=authorized_user_id)
+    context['authorized_user'] = models.UserProfile.objects.get(user=user)
+    context['tags'] = models.Tag.objects.all()
+    context['best_members'] = models.UserProfile.objects.best()
     return context
 
 
 def index(request):
-    return render(request, 'questions/index.html', {'questions': questions})
+    questions_paginated = paginate(models.Question.objects.new(), request)
+    return render(request, 'questions/index.html', prepare_template_context({'questions': questions_paginated}))
 
 
-def question(request):
-    single_question = {
-        'title': 'I cannot open emergency exit on soviet Soyuz TMA-M',
-        'answers_count': 64,
-        'votes_count': 103,
-        'user': {'name': 'Podosinovik', 'avatar': 'man3.jpg'},
-        'text': 'Really, I have no idea. Lorem ipsum dolor sit amet, consectetur adipisicing elit. '
-                'Aspernatur cupiditate mollitia provident qui similique? Eum itaque, tempora? Commodi '
-                'vero, vitae? Aspernatur cupiditate mollitia provident qui similique? Eum itaque, tempora?'
-                'Aspernatur blanditiis dolor doloremque eos facere nesciunt non obcaecati quasi, suscipit ut!',
-        'tags': ['Soyuz', 'Soyuz TMA-M', 'emergency exit', 'soviet'],
-        'created_date': '2019-01-10',
-        'answers': [
-            {
-                'id': 1,
-                'user': {'name': 'Andrey Rayel', 'avatar': 'man2.jpg'},
-                'text': 'Hello! I think, you need to ask technical support center. Aspernatur cupiditate mollitia '
-                        'provident qui similique? Eum itaque, tempora? Aspernatur cupiditate mollitia provident qui '
-                        'similique? Eum itaque, tempora?',
-                'votes_count': 6,
-                'created_date': '2019-01-10'
-            },
-            {
-                'id': 2,
-                'user': {'name': 'Traktorist', 'avatar': 'man1.jpg'},
-                'text': 'Provident qui similique? Eum itaque, tempora? Aspernatur cupiditate mollitia provident qui.'
-                        'I think, you need to ask technical support center.',
-                'votes_count': 6,
-                'created_date': '2019-01-10'
-            },
-            {
-                'id': 3,
-                'user': {'name': 'Andrey Rayel', 'avatar': 'man2.jpg'},
-                'text': 'Hello! I think, you need to ask technical support center. Aspernatur cupiditate mollitia '
-                        'provident qui similique? Eum itaque, tempora? Aspernatur cupiditate mollitia provident qui '
-                        'similique? Eum itaque, tempora?',
-                'votes_count': 6,
-                'created_date': '2019-01-10'
-            }
-        ],
-    }
-    return render(request, 'questions/question.html', prepare_template_context({'question': single_question}))
+def hot(request):
+    hot_questions = models.Question.objects.hot()
+    hot_questions_paginated = paginate(hot_questions, request)
+    return render(request, 'questions/hot.html', prepare_template_context({'questions': hot_questions_paginated}))
+
+
+def question(request, question_id):
+    try:
+        single_question = models.Question.objects.get(pk=question_id)
+    except models.Question.DoesNotExist:
+        raise Http404()
+    answers = models.Answer.objects.for_question(single_question)
+    return render(request, 'questions/question.html',
+                  prepare_template_context({'question': single_question, 'answers': answers}))
 
 
 def ask(request):
     return render(request, 'questions/ask.html', prepare_template_context({'is_ask_page': True}))
 
 
-def tag(request):
-    return render(request, 'questions/tag.html', prepare_template_context({'tag': 'coffee', 'questions': questions}))
+def tag(request, tag):
+    questions = models.Question.objects.by_tag(tag)
+    questions_paginated = paginate(questions, request)
+    return render(request, 'questions/tag.html',
+                  prepare_template_context({'tag': tag, 'questions': questions_paginated}))
 
 
 def profile(request):
-    user = {
-        'name': 'Podosinovik',
-        'avatar': 'man3.jpg',
-    }
-    return render(request, 'questions/profile.html', prepare_template_context({'user': user}))
+    return render(request, 'questions/profile.html', prepare_template_context())
 
 
 def login(request):
-    return render(request, 'questions/login.html')
+    global is_authorized
+    is_authorized = True
+    return render(request, 'questions/login.html', prepare_template_context())
 
 
 def signup(request):
-    return render(request, 'questions/signup.html')
+    return render(request, 'questions/signup.html', prepare_template_context())
+
+
+def logout(request):
+    global is_authorized
+    is_authorized = False
+    return redirect('index')

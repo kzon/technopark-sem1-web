@@ -8,9 +8,9 @@
             <div class="col-2">
                 <a class="user-avatar user-avatar-link" href="#">
                     <div class="avatar">
-                        <img src="{% static "images" %}/{{ question.user.avatar }}" alt="avatar">
+                        <img src="{% static "uploads" %}/{{ question.user.avatar }}" alt="avatar">
                     </div>
-                    <div class="username">{{ question.user.name }}</div>
+                    <div class="username">{{ question.user.user.username }}</div>
                 </a>
             </div>
             <div class="col-10">
@@ -32,15 +32,15 @@
                 </div>
                 <div class="row">
                     <div class="question-tags col-8">
-                        {% for tag in question.tags %}
-                            <a class="question-tag" href="#">{{ tag }}</a>
+                        {% for tag in question.tags.all %}
+                            <a class="question-tag" href="{% url 'tag' tag.name %}">{{ tag.name }}</a>
                         {% endfor %}
                     </div>
                     <div class="question-info col-4">
                         <span class="question-date question-created-date">{{ question.created_date }}</span>
                         <span class="question-answers-count">
                                 {{ question.answers_count }}
-                            {% if question.answers_count > 1 %} answers {% else %} answer {% endif %}
+                            {% if question.answers_count == 1 %} answer {% else %} answers {% endif %}
                             </span>
                     </div>
                 </div>
@@ -48,15 +48,17 @@
         </div>
     </div>
     <div class="answers">
-        {% for answer in question.answers %}
+        {% for answer in answers %}
             {% include 'questions/parts/answer-list-item.html' %}
         {% endfor %}
         <div class="row">
             <div class="col offset-2">
                 <form class="answer-form">
                     <label for="answer-input">Your answer</label>
-                    <textarea id="answer-input" class="answer-input form-control" placeholder="Enter your answer here..." rows="5"></textarea>
-                    <input type="submit" class="answer-form-submit btn btn-primary btn-lg form-control form-control-lg" value="Submit answer">
+                    <textarea id="answer-input" class="answer-input form-control"
+                              placeholder="Enter your answer here..." rows="5"></textarea>
+                    <input type="submit" class="answer-form-submit btn btn-primary btn-lg form-control form-control-lg"
+                           value="Submit answer">
                 </form>
             </div>
         </div>

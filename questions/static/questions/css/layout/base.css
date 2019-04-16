@@ -8,3 +8,13 @@
 .pagination .page-link {
     color: black;
 }
+
+.pagination .page-item.page-item-current a {
+    background: #dde2e5;
+    color: #dc3545;
+}
+
+.empty-content-message {
+    opacity: .7;
+    margin-top: 2em;
+}

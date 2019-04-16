@@ -8,7 +8,7 @@
         <div class="col-3">
             <div class="user-avatar">
                 <div class="avatar">
-                    <img src="{% static "images" %}/{{ user.avatar }}" alt="avatar">
+                    <img src="{{ authorized_user.avatar.url }}" alt="avatar">
                 </div>
             </div>
         </div>
