@@ -6,7 +6,7 @@ from django.http import Http404
 
 is_authorized = False
 
-authorized_user_id = 3
+authorized_user_id = 1
 
 paginator_objects_per_page = 4
 paginator_page_number_request_param = 'page'
